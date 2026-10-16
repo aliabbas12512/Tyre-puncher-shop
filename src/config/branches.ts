@@ -42,7 +42,7 @@ export type Branch = {
 export const branches: Branch[] = [
   {
     id: "branch-1",
-    name: { ar: "", en: "" },
+    name: { ar: "فرع محاسن", en: "Mahasen Branch" },
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/uRg96cTmEQpLxduH6",
     services: ["tyres", "batteries", "laserAlignment", "laserBalancing", "sensors", "mechanics"],
@@ -50,7 +50,7 @@ export const branches: Branch[] = [
   },
   {
     id: "branch-2",
-    name: { ar: "", en: "" },
+    name: { ar: "فرع الصناعية", en: "Industrial Area Branch" },
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/xUknSh3pnWZW3gHm6",
     services: ["tyres", "batteries", "laserAlignment", "laserBalancing", "sensors", "mechanics"],
@@ -58,7 +58,7 @@ export const branches: Branch[] = [
   },
   {
     id: "branch-3",
-    name: { ar: "", en: "" },
+    name: { ar: "فرع خط قطر", en: "Qatar Road Branch" },
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/6JXsBs2EPgWg47et6",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
@@ -66,7 +66,7 @@ export const branches: Branch[] = [
   },
   {
     id: "branch-4",
-    name: { ar: "", en: "" },
+    name: { ar: "فرع الغسانية", en: "Al Ghassaniyah Branch" },
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/tnu3QBoy4AA3vGwQ8",
     services: ["tyres", "batteries", "laserAlignment", "laserBalancing", "sensors", "mechanics"],
@@ -74,7 +74,7 @@ export const branches: Branch[] = [
   },
   {
     id: "branch-5",
-    name: { ar: "", en: "" },
+    name: { ar: "فرع الصناعية 2", en: "Industrial Area 2 Branch" },
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/yDqk9Ax84WK2rrKQ9",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
@@ -82,7 +82,7 @@ export const branches: Branch[] = [
   },
   {
     id: "branch-6",
-    name: { ar: "", en: "" },
+    name: { ar: "فرع الستين", en: "Al Sitteen Branch" },
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/uqEUoEyEmLq2kup9A",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
