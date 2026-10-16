@@ -55,6 +55,26 @@ if (fs.existsSync(banner)) {
   console.log("ok banner crops");
 }
 
+// Branch front photos (in the order the owner sent them: branch 1 … 6).
+// Some came with a blurred social-media frame; crop boxes remove only that frame.
+const branchPhotos = [
+  ["e9eabf21-image.jpg", "branch-1.jpg"],
+  ["ef0c81dd-image.jpg", "branch-2.jpg"],
+  ["7daf4b6d-image.jpg", "branch-3.jpg"],
+  ["89bfcd63-image.jpg", "branch-4.jpg", { left: 0, top: 0, width: 590, height: 640 }],
+  ["e6087245-image.jpg", "branch-5.jpg", { left: 64, top: 128, width: 512, height: 383 }],
+  ["c59536b9-image.jpg", "branch-6.jpg", { left: 0, top: 30, width: 640, height: 546 }],
+];
+fs.mkdirSync(path.join(out, "branches"), { recursive: true });
+for (const [from, to, box] of branchPhotos) {
+  const p = path.join(src, from);
+  if (!fs.existsSync(p)) continue;
+  const dest = path.join(out, "branches", to);
+  if (box) await sharp(p).extract(box).jpeg({ quality: 92, mozjpeg: true }).toFile(dest);
+  else fs.copyFileSync(p, dest);
+  console.log("ok branches/" + to);
+}
+
 // Logo: crop the artwork out of the PDF-viewer screenshot (740x1600).
 const logoSrc = path.join(src, "24b02d8a-image.jpg");
 if (fs.existsSync(logoSrc)) {

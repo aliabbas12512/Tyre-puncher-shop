@@ -43,15 +43,16 @@ function BranchCard({ branch: b, index, lang, t }: { branch: Branch; index: numb
   const num = String(index + 1).padStart(2, "0");
 
   return (
-    <li className="flex flex-col overflow-hidden rounded-2xl bg-ink-2 ring-1 ring-white/10 transition hover:ring-gold/50">
+    <li className="group flex flex-col overflow-hidden rounded-2xl bg-ink-2 ring-1 ring-white/10 transition hover:ring-gold/50">
       {b.image && (
-        <div className="relative aspect-[16/10]">
+        <div className="relative aspect-[4/3] overflow-hidden">
           <Image
             src={b.image.src}
             alt={`${t.branches.photoOf} ${name}`}
             fill
             sizes="(min-width:1280px) 33vw, (min-width:768px) 50vw, 100vw"
-            className="object-cover"
+            className="object-cover transition duration-500 group-hover:scale-105"
+            style={b.image.focus ? { objectPosition: b.image.focus } : undefined}
           />
           <span className="absolute start-3 top-3 rounded-lg bg-ink/80 px-2.5 py-1 text-sm font-black text-gold backdrop-blur">{num}</span>
         </div>

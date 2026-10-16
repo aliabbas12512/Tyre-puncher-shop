@@ -33,7 +33,8 @@ export type Branch = {
   address: Localized;
   mapsUrl: string;
   services: BranchService[];
-  image?: { src: string; width: number; height: number };
+  /** focus = CSS object-position, to keep the signboard in view when the card crops the photo. */
+  image?: { src: string; width: number; height: number; focus?: string };
   whatsapp?: string;
   phone?: string;
 };
@@ -45,6 +46,7 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/uRg96cTmEQpLxduH6",
     services: ["tyres", "batteries", "laserAlignment", "laserBalancing", "sensors", "mechanics"],
+    image: { src: "/images/branches/branch-1.jpg", width: 640, height: 640 },
   },
   {
     id: "branch-2",
@@ -52,6 +54,7 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/xUknSh3pnWZW3gHm6",
     services: ["tyres", "batteries", "laserAlignment", "laserBalancing", "sensors", "mechanics"],
+    image: { src: "/images/branches/branch-2.jpg", width: 640, height: 640 },
   },
   {
     id: "branch-3",
@@ -59,6 +62,7 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/6JXsBs2EPgWg47et6",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
+    image: { src: "/images/branches/branch-3.jpg", width: 1280, height: 960 },
   },
   {
     id: "branch-4",
@@ -66,6 +70,7 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/tnu3QBoy4AA3vGwQ8",
     services: ["tyres", "batteries", "laserAlignment", "laserBalancing", "sensors", "mechanics"],
+    image: { src: "/images/branches/branch-4.jpg", width: 590, height: 640, focus: "50% 75%" },
   },
   {
     id: "branch-5",
@@ -73,6 +78,7 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/yDqk9Ax84WK2rrKQ9",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
+    image: { src: "/images/branches/branch-5.jpg", width: 512, height: 383 },
   },
   {
     id: "branch-6",
@@ -80,5 +86,6 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/uqEUoEyEmLq2kup9A",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
+    image: { src: "/images/branches/branch-6.jpg", width: 640, height: 546 },
   },
 ];
