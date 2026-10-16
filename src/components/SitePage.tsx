@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { branches } from "@/config/branches";
 import { gallery, heroImage, products, services, siteConfig, type Lang } from "@/config/site";
 import { dictionaries } from "@/content/dictionary";
 import { getContactLinks, getSiteUrl, isDev, whatsappWithMessage } from "@/lib/contact";
+import Branches, { branchName } from "./Branches";
 import Gallery from "./Gallery";
 import Header from "./Header";
 import { ClockIcon, MapPinIcon, PhoneIcon, WhatsAppIcon } from "./Icons";
@@ -73,6 +75,9 @@ export default function SitePage({ lang }: { lang: Lang }) {
             ))}
           </ul>
         </section>
+
+        {/* ---------------- BRANCHES ---------------- */}
+        <Branches lang={lang} t={t} />
 
         {/* ---------------- SERVICES ---------------- */}
         <section id="services" className="py-16 sm:py-20">
@@ -287,6 +292,12 @@ function JsonLd({ lang }: { lang: Lang }) {
     logo: `${url}/images/logo.png`,
     image: gallery.slice(0, 4).map((g) => `${url}${g.src}`),
     makesOffer: services.filter((s) => s.enabled).map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title[lang] } })),
+    department: branches.map((b, i) => ({
+      "@type": "TireShop",
+      name: `${siteConfig.name[lang]} — ${branchName(b, i, lang, dictionaries[lang])}`,
+      hasMap: b.mapsUrl,
+      ...(b.address[lang] ? { address: { "@type": "PostalAddress", streetAddress: b.address[lang], addressCountry: "SA" } } : {}),
+    })),
   };
   if (siteConfig.phone) data.telephone = c.phoneDisplay;
   if (c.maps) data.hasMap = c.maps;

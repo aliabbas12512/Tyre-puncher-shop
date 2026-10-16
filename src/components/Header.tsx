@@ -21,6 +21,7 @@ export default function Header({ lang, t, shortName, fullName, whatsapp }: Props
 
   const links = [
     { href: "#home", label: t.nav.home },
+    { href: "#branches", label: t.nav.branches },
     { href: "#services", label: t.nav.services },
     { href: "#products", label: t.nav.products },
     { href: "#gallery", label: t.nav.gallery },
@@ -82,8 +83,8 @@ export default function Header({ lang, t, shortName, fullName, whatsapp }: Props
               className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-wa px-3 text-sm font-bold text-ink transition hover:brightness-110"
             >
               <WhatsAppIcon />
-              <span className="hidden sm:inline">{t.actions.whatsapp}</span>
-              <span className="sr-only sm:hidden">{t.actions.whatsapp}</span>
+              <span className="hidden whitespace-nowrap sm:inline lg:hidden xl:inline">{t.actions.whatsapp}</span>
+              <span className="sr-only sm:not-sr-only sm:hidden lg:sr-only xl:hidden">{t.actions.whatsapp}</span>
             </a>
           )}
           <button

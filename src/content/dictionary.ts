@@ -1,7 +1,7 @@
 import type { Lang } from "@/config/site";
 
 const ar = {
-  nav: { home: "الرئيسية", services: "خدماتنا", products: "منتجاتنا", gallery: "الصور", contact: "تواصل معنا" },
+  nav: { home: "الرئيسية", branches: "فروعنا", services: "خدماتنا", products: "منتجاتنا", gallery: "الصور", contact: "تواصل معنا" },
   switchTo: "English",
   switchToLabel: "Switch to English",
   menu: "القائمة",
@@ -24,6 +24,16 @@ const ar = {
     { title: "مخزون إطارات كبير", text: "مقاسات متعددة داخل المحل" },
     { title: "رافعات حديثة", text: "ورشة مجهزة بالكامل" },
   ],
+  branches: {
+    kicker: "فروعنا",
+    title: "6 فروع لخدمتكم",
+    text: "اختر الفرع الأقرب إليك — لكل فرع موقعه وخدماته الخاصة.",
+    branch: "الفرع",
+    servicesLabel: "خدمات الفرع:",
+    directions: "موقع الفرع على الخريطة",
+    greeting: "السلام عليكم، أرغب في الاستفسار من",
+    photoOf: "واجهة",
+  },
   services: { kicker: "خدماتنا", title: "خدمات متكاملة لسيارتك", text: "اضغط على زر واتساب في أي خدمة لتصلنا رسالتك مع تفاصيلها مباشرة.", ask: "استفسر عبر واتساب", greeting: "السلام عليكم، أرغب في الاستفسار عن خدمة:", productGreeting: "السلام عليكم، أرغب في الاستفسار عن توفر:" },
   products: {
     kicker: "منتجاتنا",
@@ -52,7 +62,7 @@ const ar = {
 type Dictionary = typeof ar;
 
 const en: Dictionary = {
-  nav: { home: "Home", services: "Services", products: "Products", gallery: "Gallery", contact: "Contact" },
+  nav: { home: "Home", branches: "Branches", services: "Services", products: "Products", gallery: "Gallery", contact: "Contact" },
   switchTo: "العربية",
   switchToLabel: "التبديل إلى العربية",
   menu: "Menu",
@@ -75,6 +85,16 @@ const en: Dictionary = {
     { title: "Large Tyre Stock", text: "Many sizes in store" },
     { title: "Modern Lifts", text: "Fully equipped workshop" },
   ],
+  branches: {
+    kicker: "Our Branches",
+    title: "6 branches to serve you",
+    text: "Choose the branch nearest to you — each has its own location and services.",
+    branch: "Branch",
+    servicesLabel: "Branch services:",
+    directions: "Branch location on map",
+    greeting: "Hello, I have an inquiry for",
+    photoOf: "Front of",
+  },
   services: { kicker: "Services", title: "Complete care for your car", text: "Tap the WhatsApp button on any service to message us with its details instantly.", ask: "Ask on WhatsApp", greeting: "Hello, I would like to ask about this service:", productGreeting: "Hello, I would like to check availability of:" },
   products: {
     kicker: "Products",

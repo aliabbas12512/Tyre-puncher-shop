@@ -30,6 +30,20 @@ details are simply hidden. No placeholder numbers or fake links are ever shown.
 You can also edit service and product texts in the same file. To hide a service, set
 `enabled: false`.
 
+### Branches (6)
+
+Each branch is defined in [`src/config/branches.ts`](src/config/branches.ts) with its **own**
+Google Maps link and service list. For each branch you can also set:
+
+- `name`: real branch name (until it's filled, the site shows "الفرع 1" / "Branch 1", and so on)
+- `address`: shown under the branch name when filled
+- `image`: the branch front photo. Put the file in `public/images/branches/` and set
+  `image: { src: "/images/branches/branch-1.jpg", width: 1600, height: 1200 }`
+- `whatsapp` / `phone`: only if that branch has its own number. Otherwise the main
+  number from `site.ts` is used.
+
+Each branch's WhatsApp button sends a message that names the branch and lists its services.
+
 ## 2. Run locally
 
 Requirements: Node.js 20 or newer.
