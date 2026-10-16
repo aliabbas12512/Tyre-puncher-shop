@@ -2,7 +2,7 @@ import Image from "next/image";
 import { branches } from "@/config/branches";
 import { gallery, heroImage, products, services, siteConfig, type Lang } from "@/config/site";
 import { dictionaries } from "@/content/dictionary";
-import { getContactLinks, getSiteUrl, isDev, whatsappWithMessage } from "@/lib/contact";
+import { getContactBranch, getContactLinks, getSiteUrl, isDev, whatsappWithMessage } from "@/lib/contact";
 import Branches, { branchName } from "./Branches";
 import Gallery from "./Gallery";
 import Header from "./Header";
@@ -13,7 +13,10 @@ export default function SitePage({ lang }: { lang: Lang }) {
   const t = dictionaries[lang];
   const c = getContactLinks(lang);
   const name = siteConfig.name[lang];
-  const address = siteConfig.address[lang].trim();
+  const contactBranch = getContactBranch();
+  const contactBranchName = contactBranch ? branchName(contactBranch, contactBranch.index, lang, t) : "";
+  const contactMapLabel = t.contact.mapOf.replace("{branch}", contactBranchName);
+  const address = (contactBranch?.address[lang] || siteConfig.address[lang]).trim();
   const hasContact = Boolean(c.whatsapp || c.call || c.maps);
   const activeServices = services.filter((s) => s.enabled);
 
@@ -50,7 +53,7 @@ export default function SitePage({ lang }: { lang: Lang }) {
                 <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
                   {c.whatsapp && <ActionButton href={c.whatsapp} variant="whatsapp" external>{t.actions.whatsapp}</ActionButton>}
                   {c.call && <ActionButton href={c.call} variant="call">{t.actions.call}</ActionButton>}
-                  {c.maps && <ActionButton href={c.maps} variant="location" external>{t.actions.location}</ActionButton>}
+                  <ActionButton href="#branches" variant="location">{t.actions.branches}</ActionButton>
                   {!hasContact && (
                     <>
                       <ActionButton href="#services" variant="primary">{t.actions.services}</ActionButton>
@@ -180,12 +183,18 @@ export default function SitePage({ lang }: { lang: Lang }) {
               <p className="text-sm font-bold tracking-wide text-gold uppercase">{t.contact.kicker}</p>
               <div className="gold-rule mt-2 h-1 w-12 rounded-full" />
               <h2 className="font-display mt-4 text-3xl font-extrabold sm:text-4xl">{t.contact.title}</h2>
+              {contactBranch && (
+                <p className="mt-3 inline-flex items-center gap-2 rounded-lg bg-gold/15 px-3 py-1.5 text-sm font-bold text-gold-light ring-1 ring-gold/30">
+                  <MapPinIcon className="size-4" /> {contactBranchName}
+                </p>
+              )}
               <p className="mt-3 text-white/70">{hasContact ? t.contact.text : t.contact.comingSoon}</p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 {c.whatsapp && <ActionButton href={c.whatsapp} variant="whatsapp" external>{t.actions.whatsapp}</ActionButton>}
                 {c.call && <ActionButton href={c.call} variant="call">{t.actions.call}</ActionButton>}
-                {c.maps && <ActionButton href={c.maps} variant="location" external className="sm:col-span-2">{t.contact.openMaps}</ActionButton>}
+                {c.maps && <ActionButton href={c.maps} variant="location" external className="sm:col-span-2">{contactMapLabel}</ActionButton>}
+                <ActionButton href="#branches" variant="ghost" className="sm:col-span-2">{t.contact.allBranches}</ActionButton>
               </div>
 
               <dl className="mt-8 space-y-5">
@@ -208,10 +217,17 @@ export default function SitePage({ lang }: { lang: Lang }) {
             </div>
 
             <a href={c.maps ?? "#gallery"} {...(c.maps ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group relative block aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-white/10">
-              <Image src="/images/shop-front-hankook-services-sign.jpg" alt={gallery[1].alt[lang]} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
+              <Image
+                src={contactBranch?.image?.src ?? heroImage.src}
+                alt={contactBranch ? `${t.branches.photoOf} ${contactBranchName}` : heroImage.alt[lang]}
+                fill
+                sizes="(min-width:1024px) 50vw, 100vw"
+                className="object-cover transition duration-500 group-hover:scale-105"
+                style={contactBranch?.image?.focus ? { objectPosition: contactBranch.image.focus } : undefined}
+              />
               {c.maps && (
                 <span className="absolute inset-x-4 bottom-4 inline-flex items-center justify-center gap-2 rounded-xl bg-ink/80 px-4 py-3 font-bold backdrop-blur">
-                  <MapPinIcon /> {t.contact.directions}
+                  <MapPinIcon /> {contactMapLabel}
                 </span>
               )}
             </a>
@@ -232,7 +248,8 @@ export default function SitePage({ lang }: { lang: Lang }) {
             <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
               {c.call && <a href={c.call} className="hover:text-white" dir="ltr">{c.phoneDisplay}</a>}
               {c.whatsapp && <a href={c.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-white">{t.contact.whatsapp}</a>}
-              {c.maps && <a href={c.maps} target="_blank" rel="noopener noreferrer" className="hover:text-white">{t.contact.openMaps}</a>}
+              {c.maps && <a href={c.maps} target="_blank" rel="noopener noreferrer" className="hover:text-white">{contactMapLabel}</a>}
+              <a href="#branches" className="hover:text-white">{t.contact.allBranches}</a>
               {address && <span>{address}</span>}
             </div>
           </div>
@@ -248,7 +265,7 @@ export default function SitePage({ lang }: { lang: Lang }) {
           <div className="flex gap-2">
             {c.whatsapp && <ActionButton href={c.whatsapp} variant="whatsapp" external className="flex-1 px-2 text-sm">{t.contact.whatsapp}</ActionButton>}
             {c.call && <ActionButton href={c.call} variant="call" className="flex-1 px-2 text-sm">{t.actions.callShort}</ActionButton>}
-            {c.maps && <ActionButton href={c.maps} variant="location" external className="flex-1 px-2 text-sm">{t.contact.directions}</ActionButton>}
+            <ActionButton href="#branches" variant="location" className="flex-1 px-2 text-sm">{t.actions.branchesShort}</ActionButton>
           </div>
         </nav>
       )}

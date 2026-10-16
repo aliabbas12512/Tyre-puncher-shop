@@ -1,3 +1,4 @@
+import { branches, type Branch } from "@/config/branches";
 import { siteConfig, type Lang } from "@/config/site";
 
 /** Keeps digits only; returns "" unless it looks like a full international number. */
@@ -17,7 +18,7 @@ export function getContactLinks(lang: Lang): ContactLinks {
   const phone = normalize(siteConfig.phone);
   const wa = normalize(siteConfig.whatsapp);
   const message = siteConfig.whatsappMessage[lang];
-  const maps = siteConfig.mapsUrl.trim();
+  const maps = getContactBranch()?.mapsUrl.trim() ?? "";
 
   return {
     whatsapp: wa ? `https://wa.me/${wa}${message ? `?text=${encodeURIComponent(message)}` : ""}` : null,
@@ -25,6 +26,12 @@ export function getContactLinks(lang: Lang): ContactLinks {
     maps: /^https:\/\//.test(maps) ? maps : null,
     phoneDisplay: phone ? formatPhone(phone) : null,
   };
+}
+
+/** The branch shown in the Contact section, with its position (0-based) in the branch list. */
+export function getContactBranch(): (Branch & { index: number }) | null {
+  const index = branches.findIndex((b) => b.id === siteConfig.contactBranchId);
+  return index === -1 ? null : { ...branches[index], index };
 }
 
 /** 9665XXXXXXXX -> +966 5X XXX XXXX */

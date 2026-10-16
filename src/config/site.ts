@@ -9,8 +9,7 @@
  *  Phone / WhatsApp format: international, digits only, no "+" or spaces.
  *    Saudi mobile 05X XXX XXXX  ->  9665XXXXXXXX   (drop the leading 0, add 966)
  *
- *  Google Maps link: open the shop in Google Maps -> Share -> Copy link,
- *  and paste it below (e.g. https://maps.app.goo.gl/xxxxxxxx).
+ *  Google Maps links are set per branch in src/config/branches.ts.
  */
 
 export type Lang = "ar" | "en";
@@ -49,8 +48,11 @@ export const siteConfig = {
     en: "Hello, I would like to ask about your services.",
   } satisfies Localized,
 
-  /** Exact Google Maps share link of the shop. */
-  mapsUrl: "https://maps.app.goo.gl/xz4cHXEKuZVKKk6u9",
+  /**
+   * The branch shown in the Contact section (its photo, address and Maps link
+   * come from src/config/branches.ts). Must match a branch `id`.
+   */
+  contactBranchId: "branch-6",
 
   /** Street address, e.g. "طريق ..., حي ..., الرياض". */
   address: {

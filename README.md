@@ -15,9 +15,9 @@ Edit **one file**: [`src/config/site.ts`](src/config/site.ts)
 
 | Field | Example format | What happens if it's empty |
 |---|---|---|
+| `contactBranchId` | `"branch-6"` | Which branch the Contact section shows (photo, address, Maps link) |
 | `phone` | `9665XXXXXXXX` (drop the leading 0, add 966) | "Call Now" buttons are hidden |
 | `whatsapp` | `9665XXXXXXXX` | WhatsApp buttons are hidden |
-| `mapsUrl` | `https://maps.app.goo.gl/...` (Google Maps → Share → Copy link) | Directions buttons are hidden |
 | `address.ar` / `address.en` | Street, district, city | Address line is hidden |
 | `hours` | See example in the file | Hours are hidden |
 | `name.en` | Your registered English name | Currently an English rendering of the Arabic signboard name. **Please confirm it.** |
