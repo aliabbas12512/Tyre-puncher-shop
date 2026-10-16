@@ -38,10 +38,10 @@ export const siteConfig = {
   } satisfies Localized,
 
   /** Main phone number for calls, e.g. "9665XXXXXXXX". */
-  phone: "966506866253",
+  phone: "966537444885",
 
   /** WhatsApp number, e.g. "9665XXXXXXXX". Can be the same as phone. */
-  whatsapp: "966506866253",
+  whatsapp: "966537444885",
 
   /** Pre-filled WhatsApp message (optional). */
   whatsappMessage: {
