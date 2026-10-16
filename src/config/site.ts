@@ -38,10 +38,10 @@ export const siteConfig = {
   } satisfies Localized,
 
   /** Main phone number for calls, e.g. "9665XXXXXXXX". */
-  phone: "",
+  phone: "966506866253",
 
   /** WhatsApp number, e.g. "9665XXXXXXXX". Can be the same as phone. */
-  whatsapp: "",
+  whatsapp: "966506866253",
 
   /** Pre-filled WhatsApp message (optional). */
   whatsappMessage: {
@@ -50,7 +50,7 @@ export const siteConfig = {
   } satisfies Localized,
 
   /** Exact Google Maps share link of the shop. */
-  mapsUrl: "",
+  mapsUrl: "https://maps.app.goo.gl/xz4cHXEKuZVKKk6u9",
 
   /** Street address, e.g. "طريق ..., حي ..., الرياض". */
   address: {

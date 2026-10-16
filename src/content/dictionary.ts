@@ -24,7 +24,7 @@ const ar = {
     { title: "مخزون إطارات كبير", text: "مقاسات متعددة داخل المحل" },
     { title: "رافعات حديثة", text: "ورشة مجهزة بالكامل" },
   ],
-  services: { kicker: "خدماتنا", title: "خدمات متكاملة لسيارتك", text: "خدمات تراها بنفسك في صور ورشتنا." },
+  services: { kicker: "خدماتنا", title: "خدمات متكاملة لسيارتك", text: "اضغط على زر واتساب في أي خدمة لتصلنا رسالتك مع تفاصيلها مباشرة.", ask: "استفسر عبر واتساب", greeting: "السلام عليكم، أرغب في الاستفسار عن خدمة:", productGreeting: "السلام عليكم، أرغب في الاستفسار عن توفر:" },
   products: {
     kicker: "منتجاتنا",
     title: "منتجات من علامات معروفة",
@@ -75,7 +75,7 @@ const en: Dictionary = {
     { title: "Large Tyre Stock", text: "Many sizes in store" },
     { title: "Modern Lifts", text: "Fully equipped workshop" },
   ],
-  services: { kicker: "Services", title: "Complete care for your car", text: "Services you can see for yourself in our workshop photos." },
+  services: { kicker: "Services", title: "Complete care for your car", text: "Tap the WhatsApp button on any service to message us with its details instantly.", ask: "Ask on WhatsApp", greeting: "Hello, I would like to ask about this service:", productGreeting: "Hello, I would like to check availability of:" },
   products: {
     kicker: "Products",
     title: "Products from trusted brands",

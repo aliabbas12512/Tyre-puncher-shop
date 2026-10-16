@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { gallery, heroImage, products, services, siteConfig, type Lang } from "@/config/site";
 import { dictionaries } from "@/content/dictionary";
-import { getContactLinks, getSiteUrl, isDev } from "@/lib/contact";
+import { getContactLinks, getSiteUrl, isDev, whatsappWithMessage } from "@/lib/contact";
 import Gallery from "./Gallery";
 import Header from "./Header";
 import { ClockIcon, MapPinIcon, PhoneIcon, WhatsAppIcon } from "./Icons";
@@ -79,8 +79,10 @@ export default function SitePage({ lang }: { lang: Lang }) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeading kicker={t.services.kicker} title={t.services.title} text={t.services.text} />
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {activeServices.map((s, i) => (
-                <li key={s.id} className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:shadow-lg">
+              {activeServices.map((s, i) => {
+                const waService = whatsappWithMessage(`${t.services.greeting}\n*${s.title[lang]}*\n${s.description[lang]}`);
+                return (
+                <li key={s.id} className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:shadow-lg">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={s.image}
@@ -94,12 +96,20 @@ export default function SitePage({ lang }: { lang: Lang }) {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <div className="p-5">
+                  <div className="flex flex-1 flex-col p-5">
                     <h3 className="font-display text-lg font-extrabold">{s.title[lang]}</h3>
                     <p className="mt-2 text-[15px] leading-relaxed text-ink/70">{s.description[lang]}</p>
+                    {waService && (
+                      <div className="mt-auto pt-5">
+                        <ActionButton href={waService} variant="whatsapp" external className="w-full text-[15px]">
+                          {t.services.ask}
+                        </ActionButton>
+                      </div>
+                    )}
                   </div>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </div>
         </section>
@@ -135,7 +145,7 @@ export default function SitePage({ lang }: { lang: Lang }) {
                       </div>
                     )}
                     {c.whatsapp && (
-                      <a href={c.whatsapp} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold text-wa hover:underline">
+                      <a href={whatsappWithMessage(`${t.services.productGreeting} ${p.title[lang]}`) ?? c.whatsapp} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-bold text-wa hover:underline">
                         <WhatsAppIcon className="size-4" /> {t.products.ask}
                       </a>
                     )}
