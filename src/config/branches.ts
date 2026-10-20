@@ -70,7 +70,7 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/tnu3QBoy4AA3vGwQ8",
     services: ["tyres", "batteries", "laserAlignment", "laserBalancing", "sensors", "mechanics"],
-    image: { src: "/images/branches/branch-4.jpg", width: 590, height: 640, focus: "50% 75%" },
+    image: { src: "/images/branches/branch-4.jpg", width: 1600, height: 1200 },
   },
   {
     id: "branch-5",
@@ -78,7 +78,7 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/yDqk9Ax84WK2rrKQ9",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
-    image: { src: "/images/branches/branch-5.jpg", width: 512, height: 383 },
+    image: { src: "/images/branches/branch-5.jpg", width: 1600, height: 1200 },
   },
   {
     id: "branch-6",
@@ -86,6 +86,6 @@ export const branches: Branch[] = [
     address: { ar: "", en: "" },
     mapsUrl: "https://maps.app.goo.gl/uqEUoEyEmLq2kup9A",
     services: ["tyres", "batteries", "oilsFilters", "laserAlignment", "laserBalancing", "mechanics"],
-    image: { src: "/images/branches/branch-6.jpg", width: 640, height: 546 },
+    image: { src: "/images/branches/branch-6.jpg", width: 1600, height: 1200 },
   },
 ];

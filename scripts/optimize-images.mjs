@@ -56,14 +56,15 @@ if (fs.existsSync(banner)) {
 }
 
 // Branch front photos (in the order the owner sent them: branch 1 … 6).
-// Some came with a blurred social-media frame; crop boxes remove only that frame.
+// An optional crop box removes only a blurred social-media frame, if a photo has one.
 const branchPhotos = [
   ["e9eabf21-image.jpg", "branch-1.jpg"],
   ["ef0c81dd-image.jpg", "branch-2.jpg"],
   ["7daf4b6d-image.jpg", "branch-3.jpg"],
-  ["89bfcd63-image.jpg", "branch-4.jpg", { left: 0, top: 0, width: 590, height: 640 }],
-  ["e6087245-image.jpg", "branch-5.jpg", { left: 64, top: 128, width: 512, height: 383 }],
-  ["c59536b9-image.jpg", "branch-6.jpg", { left: 0, top: 30, width: 640, height: 546 }],
+  // Branches 4–6: higher-resolution replacements sent later by the owner.
+  ["2090b35e-image.jpg", "branch-4.jpg"],
+  ["37076c59-image.jpg", "branch-5.jpg"],
+  ["d4cc24c9-image.jpg", "branch-6.jpg"],
 ];
 fs.mkdirSync(path.join(out, "branches"), { recursive: true });
 for (const [from, to, box] of branchPhotos) {
